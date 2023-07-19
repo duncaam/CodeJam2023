@@ -1,0 +1,67 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<body>
+    <div class="container">
+        <div class="col align-self-center">
+            <div class="row justify-content-around">
+                <div class="col-">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3><strong>The Daily Gauge</strong></h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                The process is simple - just take or upload a photo of your face, or faces, expressing how you feel.
+                                <br />
+                                From there the heavy lifting is done by us. Enjoy the exciting results!
+                            </p>
+                            <div class="col align-self-center">
+                                <div class="row justify-content-around">
+                                    <div class="col-">
+                                        <form class="upload-form" method="post" enctype="multipart/form-data">
+                                            <label for="upload-image" class="btn btn-warning">Take or Upload a Photo!</label>
+                                            <input type="file" onchange="form.submit()" id="upload-image" placeholder="Take or Upload a Photo" asp-for="Upload" />
+                                        </form>
+                                        <a class="btn btn-warning" asp-page="./Corkboard">View The Corkboard</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div id="carouselTestomonialControls" class="carousel slide" data-ride="carousel" style="border: groove">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselTestomonialControls" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselTestomonialControls" data-slide-to="1"></li>
+                                <li data-target="#carouselTestomonialControls" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="@Html.DisplayFor(model => model.imgBBReturn1.imgBBUrl)" alt="Recent Image From A User" />
+                                </div>
+                                @foreach (var item in Model.imgBBReturns23)
+                                {
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="@item.imgBBUrl" alt="Recent Image From A User" />
+                                    </div>
+                                }
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselTestomonialControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselTestomonialControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
